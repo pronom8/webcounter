@@ -27,5 +27,10 @@ jobs:
         run: poetry install
       - name: Install lsof
         run: sudo apt-get update && sudo apt-get install -y lsof
+      - name: Fix line endings
+        run: |
+          sudo apt-get install -y dos2unix
+          dos2unix run_robot_tests.sh
+      
       - name: Run robot tests
         run: bash run_robot_tests.sh
